@@ -1,0 +1,19 @@
+{
+    "name": "garagist/fontawesome-alpinejs",
+    "description": "Fetch fontawesome icons with AlpineJS. Cached with LocalStorage",
+    "type": "neos-plugin",
+    "license": "GPL-3.0-or-later",
+    "require": {
+        "garagist/fontawesome": "^0.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "Garagist\\Fontawesome\\AlpineJS\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Garagist.Fontawesome.AlpineJS"
+        }
+    }
+}

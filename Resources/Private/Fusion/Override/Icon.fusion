@@ -1,0 +1,9 @@
+prototype(Garagist.Fontawesome:Component.Icon) {
+    tagName = 'i'
+
+    iconParts = ${Garagist.Fontawesome.parts(this.style, this.icon)}
+    content >
+    @if.hasContent = ${this.iconParts}
+
+    renderer.overwriteAttributes.x-data = ${AlpineJS.xData('icon', props.iconParts)}
+}
