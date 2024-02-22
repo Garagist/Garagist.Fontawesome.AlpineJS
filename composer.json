@@ -4,7 +4,7 @@
     "type": "neos-plugin",
     "license": "GPL-3.0-or-later",
     "require": {
-        "garagist/fontawesome": "^0.1"
+        "garagist/fontawesome": "^0.1.6"
     },
     "autoload": {
         "psr-4": {
