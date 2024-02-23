@@ -1,5 +1,7 @@
 import lscache from "lscache";
 
+lscache.setBucket("icons");
+
 function replaceTag(element, markup) {
     const attributes = [...element.attributes]
         .filter((item) => item.name != "x-data")
@@ -16,7 +18,6 @@ function replaceTag(element, markup) {
 window.addEventListener("alpine:init", () => {
     window.Alpine.data("icon", (segment) => ({
         init() {
-            lscache.setBucket("icons");
             const cache = lscache.get(segment);
             if (cache && typeof cache === "string") {
                 replaceTag(this.$el, cache);
