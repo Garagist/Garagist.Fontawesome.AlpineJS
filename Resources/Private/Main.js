@@ -1,6 +1,20 @@
 import lscache from "lscache";
 
-lscache.setBucket("icons");
+const cacheName = "icon:";
+
+function setCache(name, value) {
+    lscache.setBucket(cacheName);
+    // Store for 1 week 60 min * 24 hours * 7 days = 10080
+    lscache.set(name, value, 10080);
+    lscache.resetBucket();
+}
+
+function getCache(name) {
+    lscache.setBucket(cacheName);
+    const value = lscache.get(name);
+    lscache.resetBucket();
+    return value;
+}
 
 function replaceTag(element, markup) {
     const attributes = [...element.attributes]
@@ -18,7 +32,7 @@ function replaceTag(element, markup) {
 window.addEventListener("alpine:init", () => {
     window.Alpine.data("icon", (segment) => ({
         init() {
-            const cache = lscache.get(segment);
+            const cache = getCache(segment);
             if (cache && typeof cache === "string") {
                 replaceTag(this.$el, cache);
                 return;
@@ -31,8 +45,7 @@ window.addEventListener("alpine:init", () => {
                     return response.text();
                 })
                 .then((data) => {
-                    // Store for 1 week 60 min * 24 hours * 7 days = 10080
-                    lscache.set(segment, data, 10080);
+                    setCache(segment, data);
                     replaceTag(this.$el, data);
                 })
                 .catch((error) => {
