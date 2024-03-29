@@ -5,5 +5,5 @@ prototype(Garagist.Fontawesome:Component.Icon) {
     content >
     @if.hasContent = ${this.iconParts}
 
-    renderer.overwriteAttributes.x-data = ${AlpineJS.xData('icon', props.iconParts)}
+    renderer.overwriteAttributes.x-data = ${AlpineJS.function('icon', props.iconParts)}
 }
